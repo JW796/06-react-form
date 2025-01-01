@@ -49,9 +49,22 @@ function App() {
               id="dob"
               name="dob"
               type="date"
+              max="2006-01-01"
               placeholder="Date of birth"
               onChange="handleInput"
             />
+          </div>
+          <div flex flex-col>
+            <label className="text-2xl font-semibold">
+              What's your gender?
+            </label>
+            <select name="gender" id="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="MTF">MTF</option>
+              <option value="FTM">FTM</option>
+              <option value="Non-binary<">Non-binary</option>
+            </select>
           </div>
         </fieldset>
       </form>
