@@ -1,5 +1,21 @@
+import { useState } from "react";
+
 function App() {
-  const handleInput = () => {};
+  const [userInfo, setUserInfo] = useState({
+    firsrName: "",
+    lastName: "",
+    email: "",
+    dob: "",
+    gender: "",
+  });
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUserInfo({
+      ...userInfo,
+      [name]: value,
+    });
+  };
   return (
     <>
       <h1 className="text-3xl text-center my-4 py-2">React Forms</h1>
@@ -13,7 +29,7 @@ function App() {
               What's your name?
             </label>
             <input
-              className="border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
+              className="w-4/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
               type="text"
               id="firstName"
               name="firstName"
@@ -21,7 +37,7 @@ function App() {
               onChange={handleInput}
             />
             <input
-              className="border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
+              className="w-4/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
               type="text"
               id="lastName"
               name="lastname"
@@ -32,7 +48,7 @@ function App() {
           <div className="inline-grid">
             <label className="text-2xl font-semibold">What's your email</label>
             <input
-              className="border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
+              className="w-4/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
               id="email"
               name="email"
               type="email"
@@ -45,7 +61,7 @@ function App() {
               What is your date of birth
             </label>
             <input
-              className="border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
+              className="w-4/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
               id="dob"
               name="dob"
               type="date"
@@ -58,7 +74,11 @@ function App() {
             <label className="text-2xl font-semibold">
               What's your gender?
             </label>
-            <select name="gender" id="gender">
+            <select
+              className="w-3/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
+              name="gender"
+              id="gender"
+            >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="MTF">MTF</option>
