@@ -9,17 +9,20 @@ function App() {
     gender: "",
   });
 
-  const handleInput = (e) => {
+  console.log(userInfo);
+
+  const handleInput = e => {
     const { name, value } = e.target;
     setUserInfo({
       ...userInfo,
       [name]: value,
     });
   };
+
   return (
     <>
       <h1 className="text-3xl text-center my-4 py-2">React Forms</h1>
-      <form className="w-5/6 max-w-md mx-auto">
+      <form className="w-5/6 max-w-xl mx-auto py-4">
         <fieldset className="flex flex-col gap-2 border py-1 py-3">
           <legend className="text-2xl font-semibold mb-2 text-gray-500">
             About you
@@ -33,7 +36,7 @@ function App() {
               type="text"
               id="firstName"
               name="firstName"
-              placeholder="First Name"
+              placeholder="First name"
               onChange={handleInput}
             />
             <input
@@ -78,6 +81,7 @@ function App() {
               className="w-3/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
               name="gender"
               id="gender"
+              onChange={handleInput}
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -85,6 +89,25 @@ function App() {
               <option value="FTM">FTM</option>
               <option value="Non-binary<">Non-binary</option>
             </select>
+          </div>
+        </fieldset>
+        <fieldset className="flex flex-col gap-2 border py-1 py-3">
+          <legend className="text-2xl font-semibold mb-2 text-gray-500">
+            Promts
+          </legend>
+          <div>
+            <label className="text-2xl font-semibold">
+              <select
+                className="w-4/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
+                name="promt1"
+                id="promt1"
+                onChange={handleInput}
+              >
+                <option value="My top intrests are...">
+                  My top five intrests are...
+                </option>
+              </select>
+            </label>
           </div>
         </fieldset>
       </form>
