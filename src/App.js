@@ -7,9 +7,11 @@ function App() {
     email: "",
     dob: "",
     gender: "",
+    prompt1:"",
+    answer1: "",
   });
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   const handleInput = e => {
     const { name, value } = e.target;
@@ -22,7 +24,7 @@ function App() {
   return (
     <>
       <h1 className="text-3xl text-center my-4 py-2">React Forms</h1>
-      <form className="w-5/6 max-w-xl mx-auto py-4">
+      <form className="w-5/6 max-w-xl mx-auto py-2 pb-10">
         <fieldset className="flex flex-col gap-2 border py-1 py-3">
           <legend className="text-2xl font-semibold mb-2 text-gray-500">
             About you
@@ -73,7 +75,7 @@ function App() {
               onChange="handleInput"
             />
           </div>
-          <div flex flex-col>
+          <div className="inline-grid">
             <label className="text-2xl font-semibold">
               What's your gender?
             </label>
@@ -95,7 +97,7 @@ function App() {
           <legend className="text-2xl font-semibold mb-2 text-gray-500">
             Promts
           </legend>
-          <div>
+          <div className="Flex flex-col">
             <label className="text-2xl font-semibold">
               <select
                 className="w-4/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
@@ -106,7 +108,27 @@ function App() {
                 <option value="My top intrests are...">
                   My top five intrests are...
                 </option>
+                <option value="I spend most of my money on:">
+                  I spend most of my money on:
+                </option>
+                <option value="My favorite food is...">
+                  My favorite food is...
+                </option>
+                <option value="I value _____ most in the people around me.">
+                  I value _____ most in the people around me.
+                </option>
+                <option value="The most spontaneous thing I've done:">
+                  The most spontaneous thing I've done:
+                </option>
               </select>
+              <textarea
+                className="w-full border border-dashed py-3 px-2"
+                name="answer1"
+                id="answer1"
+                rows="5"
+                placeholder="Tell us about yourself!"
+                onChange={handleInput}
+              />
             </label>
           </div>
         </fieldset>
