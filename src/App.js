@@ -7,18 +7,42 @@ function App() {
     email: "",
     dob: "",
     gender: "",
-    prompt1:"",
-    answer1: "",
   });
+
+  const [prompts, setPrompts] = useState([
+    {
+      prompt: "",
+      answer: "",
+      timestamp: new Date().getTime(),
+    },
+  ]);
 
   // console.log(userInfo);
 
-  const handleInput = e => {
+  const handleInput = (e) => {
     const { name, value } = e.target;
     setUserInfo({
       ...userInfo,
       [name]: value,
     });
+  };
+
+  const handlePrompt = (e, i) => {
+    const { name, value } = e.target;
+    let newPrompts = [...prompts];
+    newPrompts[i][name] = value;
+    setPrompts(newPrompts);
+  };
+
+  const handleAddPrompt = () => {
+    setPrompts([
+      ...prompts,
+      {
+        prompt: "",
+        answer: "",
+        timestamp: new Date().getTime(),
+      },
+    ]);
   };
 
   return (
@@ -97,13 +121,14 @@ function App() {
           <legend className="text-2xl font-semibold mb-2 text-gray-500">
             Promts
           </legend>
-          <div className="Flex flex-col">
-            <label className="text-2xl font-semibold">
+          {prompts.map((prompt, i) => (
+            <div key={prompt.timestamp} className="Flex flex-col">
+              <label className="text-2xl font-semibold">Select a Prompt</label>
               <select
                 className="w-4/5 border rounded text-lg leading-light py-3 px-2 mt-4 mb-3 focus:outline-indigo-200"
-                name="promt1"
-                id="promt1"
-                onChange={handleInput}
+                name="promt"
+                id="promt"
+                onChange={(e) => handlePrompt(e, i)}
               >
                 <option value="My top intrests are...">
                   My top five intrests are...
@@ -125,11 +150,20 @@ function App() {
                 className="w-full border border-dashed py-3 px-2"
                 name="answer1"
                 id="answer1"
-                rows="5"
+                rows={5}
                 placeholder="Tell us about yourself!"
-                onChange={handleInput}
+                onChange={(e) => handlePrompt(e, i)}
               />
-            </label>
+            </div>
+          ))}
+          <div className="w-full flex justify-center">
+            <button
+              className="border bg-indigo-400 py-1 px-2 rounded-lg text-white font-bold text-xl"
+              type="button"
+              onClick={handleAddPrompt}
+            >
+              Add Prompt
+            </button>
           </div>
         </fieldset>
       </form>
